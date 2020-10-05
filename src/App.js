@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { createContext, useState } from 'react';
+import CountryWrap from './components/CountryWrap/CountryWrap';
+import Header from './components/Header/Header';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import Details from './components/Details/Details';
+import WrongPath from './components/WrongPath/WrongPath';
+export const CountryInfo=createContext();
 
-function App() {
+
+const App = () => {
+  
+  const [countries, setCountries]=useState([]);
+   
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CountryInfo.Provider value={[countries,setCountries]}>
+      <Header/>      
+      <Router>
+        <Switch>
+          <Route exact path='/'><CountryWrap/></Route>
+          <Route path='/country/:countryNmae'><Details/></Route>
+          <Route path='*'><WrongPath/></Route>
+        </Switch>
+      </Router>
+    </CountryInfo.Provider>
   );
-}
+};
 
 export default App;

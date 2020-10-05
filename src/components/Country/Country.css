@@ -1,0 +1,19 @@
+.c-wrap{
+    border: 1px solid lightgray;
+    background-color: azure;
+}
+.main-btn{
+    
+    background-color:blue;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 5px;
+}
+.main-btn a{
+    color: white;
+    
+}
+.main-btn a:hover{
+    color: white;
+    text-decoration: none;
+}
